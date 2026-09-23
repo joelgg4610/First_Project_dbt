@@ -11,6 +11,7 @@ models:
               arguments: 
                 to: ref('stg_jaffle_shop__orders')
                 field: order_id
+          - not_null 
       - name: payment_method
         data_tests:
           - accepted_values:
@@ -20,8 +21,19 @@ models:
                   - bank_transfer
                   - coupon 
                   - gift_card
+          - not_null
       - name: payment_status
         data_tests:
           - accepted_values:
               arguments: 
                 values: ['success', 'fail']
+          - not_null
+      - name: payment_amount
+        data_tests:
+          - not_null 
+      - name: payment_created
+        data_tests:
+          - not_null
+      - name: _batched_at
+        data_tests:
+          - not_null    
