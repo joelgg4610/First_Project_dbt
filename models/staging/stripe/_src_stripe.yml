@@ -11,35 +11,35 @@ sources:
       - name: payment
         columns:
           - name: id
-        data_tests:
-          - unique 
-          - not_null
-      - name: orderid
-        data_tests:
-          - relationships:
-              arguments: 
-                to: ref('stg_jaffle_shop__orders')
-                field: order_id
-          - not_null 
-      - name: paymentmethod
-        data_tests:
-          - accepted_values:
-              arguments: 
-                values:
-                  - credit_card
-                  - bank_transfer
-                  - coupon 
-                  - gift_card
-          - not_null
-      - name: status
-        data_tests:
-          - accepted_values:
-              arguments: 
-                values: ['success', 'fail']
-          - not_null
-      - name: amount
-        data_tests:
-          - not_null 
-      - name: created
-        data_tests:
-          - not_null
+            data_tests:
+              - unique 
+              - not_null
+          - name: orderid
+            data_tests:
+              - relationships:
+                  arguments: 
+                    to: ref('stg_jaffle_shop__orders')
+                    field: order_id
+              - not_null 
+          - name: paymentmethod
+            data_tests:
+              - accepted_values:
+                  arguments: 
+                    values:
+                      - credit_card
+                      - bank_transfer
+                      - coupon 
+                      - gift_card
+              - not_null
+          - name: status
+            data_tests:
+              - accepted_values:
+                  arguments: 
+                    values: ['success', 'fail']
+              - not_null
+          - name: amount
+            data_tests:
+              - not_null 
+          - name: created
+            data_tests:
+              - not_null
