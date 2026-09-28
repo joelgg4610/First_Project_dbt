@@ -1,7 +1,8 @@
 sources:
   - name: stripe
     database: raw 
-    schema: stripe 
+    schema: stripe
+    description: A clone of a Postgres application database.  
     config:
       loaded_at_field: _batched_at
       freshness:
@@ -9,12 +10,15 @@ sources:
         error_after: {count: 7, period: day}
     tables:
       - name: payment
+        description: Raw payment data
         columns:
           - name: id
+            description: Primary key for payment data.
             data_tests:
               - unique 
               - not_null
           - name: orderid
+            description: Relationship payment column that references to order table 
             data_tests:
               - relationships:
                   arguments: 
@@ -22,6 +26,7 @@ sources:
                     field: order_id
               - not_null 
           - name: paymentmethod
+            description: "{{ doc('payment_method') }}"
             data_tests:
               - accepted_values:
                   arguments: 
@@ -32,14 +37,17 @@ sources:
                       - gift_card
               - not_null
           - name: status
+            description: "{{ doc('payment_status') }}"
             data_tests:
               - accepted_values:
                   arguments: 
                     values: ['success', 'fail']
               - not_null
           - name: amount
+            description: Represents the price amout of the payment.
             data_tests:
               - not_null 
           - name: created
+            description: Represents the date that the payment was created.
             data_tests:
               - not_null
