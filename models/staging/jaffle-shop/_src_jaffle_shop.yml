@@ -22,9 +22,11 @@ sources:
               - unique 
               - not_null
           - name: first_name
+            description: Raw data for customer's first name
             data_tests:
               - not_null
           - name: last_name
+            description: Raw data for customer's last name
             data_tests:
               - not_null 
         config: {freshness: null}
@@ -32,11 +34,12 @@ sources:
         description: Raw orders data.
         columns:
           - name: id 
-            description: Primary key for orders data
+            description: Primary key for orders data 
             data_tests:
               - unique 
               - not_null
           - name: status
+            description: "{{ doc('order_status') }}"
             data_tests:
               - accepted_values:
                   arguments:
