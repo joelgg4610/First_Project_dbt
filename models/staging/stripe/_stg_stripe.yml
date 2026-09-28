@@ -1,11 +1,14 @@
 models:
   - name: stg_stripe__payment
+    description: Staged payment data from stripe. The grain of this table is one unique payment per row.
     columns:
       - name: payment_id
+        description: Primary key for payment table.
         data_tests:
           - unique 
           - not_null
       - name: order_id
+        description: Relationship payment column that references to order table 
         data_tests:
           - relationships:
               arguments: 
@@ -29,11 +32,14 @@ models:
                 values: ['success', 'fail']
           - not_null
       - name: payment_amount
+        description: Represents the price amout of the payment.
         data_tests:
           - not_null 
       - name: payment_created
+        description: Represents the date that the payment was created.
         data_tests:
           - not_null
       - name: _batched_at
+        description: Represents the last update time for payments table.
         data_tests:
           - not_null    
