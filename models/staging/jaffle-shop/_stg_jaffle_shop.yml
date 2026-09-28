@@ -8,6 +8,7 @@ models:
           - unique 
           - not_null
       - name: customer_first_name
+        description: Customer's first name
         data_tests:
           - not_null 
   - name: stg_jaffle_shop__orders
@@ -30,6 +31,7 @@ models:
                   - return_pending
                   - returned
       - name: customer_id
+        description: Relationship order column that references to customer table  
         data_tests:
           - relationships:
               arguments: 
